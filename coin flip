@@ -1,0 +1,23 @@
+import tkinter as tk
+import random as r
+
+root = tk.Tk()
+root.title("Coin Flip")
+
+l = tk.Label(root, text="Click 'Flip' to start", font=("Comic Sans", 20))
+l.pack(pady=20)
+
+def flip():
+    def animate(count=0):
+        if count < 10:  
+            l.config(text=r.choice(["Flipping...", "Spinning...", "Tossing..."]))
+            root.after(100, animate, count+1)  
+        else:
+            l.config(text=r.choice(["Heads", "Tails"]))  
+
+    animate()
+
+b = tk.Button(root, text="Flip Coin", font=("Comic Sans", 15), command=flip)
+b.pack(pady=20)
+
+root.mainloop()
